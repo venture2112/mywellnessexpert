@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Debra Asakura | Beyond Chiropractic - Functional Wellness</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #fff;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+        
+        /* Header */
+        header {
+            background: #1a1a1a;
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            height: 70px;
+        }
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+        .nav-links a {
+            margin-left: 35px;
+            text-decoration: none;
+            color: #d4af37;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #f4e4bc;
+        }
+        
+        /* Hero - Full Width with Overlay */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1920');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(124,154,109,0.75) 50%, rgba(212,175,55,0.7) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 30px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212,175,55,0.2);
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9em;
+        }
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            color: #d4af37;
+            display: block;
+        }
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        .btn {
+            display: inline-block;
+            background: #d4af37;
+            color: white;
+            padding: 20px 60px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #c9a227;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: #1a1a1a;
+            padding: 60px 0;
+            color: white;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 3em;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        .stat-item p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        /* Featured Services - Horizontal Scroll */
+        .featured-services {
+            padding: 100px 0;
+            background: #faf7f0;
+        }
+        .featured-services h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        .featured-services > .container > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 60px;
+            font-size: 1.1em;
+        }
+        .services-scroll {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 #f5f0e6;
+        }
+        .services-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .services-scroll::-webkit-scrollbar-track {
+            background: #f5f0e6;
+            border-radius: 4px;
+        }
+        .services-scroll::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+        .service-item {
+            flex: 0 0 280px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #7c9a6d 0%, #d4af37 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2em;
+        }
+        .service-item h3 {
+            font-size: 1.3em;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .service-item p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        /* Testimonial Highlight */
+        .testimonial-highlight {
+            padding: 100px 0;
+            background: #fff;
+            text-align: center;
+        }
+        .testimonial-highlight blockquote {
+            font-size: 2em;
+            color: #2d3748;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.4;
+        }
+        .testimonial-highlight blockquote::before {
+            content: '"';
+            font-size: 3em;
+            color: #d4af37;
+            display: block;
+            margin-bottom: -20px;
+        }
+        .testimonial-author {
+            color: #7c9a6d;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #7c9a6d 0%, #5a7a4a 100%);
+            text-align: center;
+            color: white;
+        }
+        .cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        .btn-white {
+            display: inline-block;
+            background: white;
+            color: #2d3748;
+            padding: 20px 60px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .hero h1 {
+                font-size: 3em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-highlight blockquote {
+                font-size: 1.5em;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><a href="index.html"><img src="logo.png" alt="Asakura Beyond Chiropractic"></a></div>
+                <nav class="nav-links">
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="articles.html">Articles</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">30+ Years of Excellence</div>
+            <h1>Heal Your Body.<br><span>Reclaim Your Life.</span></h1>
+            <p>Discover the root cause of your health challenges with advanced therapeutic technologies and functional wellness expertise.</p>
+            <a href="#consultation" class="btn">Schedule Your Consultation</a>
+        </div>
+    </section>
+    
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>30+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Patients Helped</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8</h3>
+                    <p>Advanced Technologies</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Commitment to You</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured-services">
+        <div class="container">
+            <h2>Advanced Therapeutic Services</h2>
+            <p>Cutting-edge treatments tailored to your unique needs</p>
+            <div class="services-scroll">
+                <div class="service-item">
+                    <div class="service-icon">💆</div>
+                    <h3>Compression Therapy</h3>
+                    <p>Improve circulation and reduce inflammation with our advanced compression table technology.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">⚡</div>
+                    <h3>Electrical Stimulation</h3>
+                    <p>Powerful ESM technology for pain relief, muscle rehabilitation, and tissue healing.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔊</div>
+                    <h3>Therapeutic Ultrasound</h3>
+                    <p>Deep tissue healing that breaks down scar tissue and accelerates recovery.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💫</div>
+                    <h3>Shockwave Therapy</h3>
+                    <p>Non-invasive treatment for chronic pain and tissue regeneration.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔆</div>
+                    <h3>Cold Laser Therapy</h3>
+                    <p>Painless cellular healing and natural pain relief at the cellular level.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🧠</div>
+                    <h3>BrainHealthPlus</h3>
+                    <p>Brain training program to improve memory and balance.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔬</div>
+                    <h3>Cancer Screening</h3>
+                    <p>Early detection and prevention through comprehensive screening.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🥗</div>
+                    <h3>Nutritional Consulting</h3>
+                    <p>Personalized nutrition plans to fuel your body for optimal health.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonial-highlight">
+        <div class="container">
+            <blockquote>After years of chronic pain, Dr. Asakura gave me my life back. Her approach is unlike anything I've experienced.</blockquote>
+            <p class="testimonial-author">— Margaret T., Patient</p>
+        </div>
+    </section>
+    
+    <section class="cta" id="consultation">
+        <div class="container">
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Take the first step toward lasting wellness. Schedule your consultation today.</p>
+            <a href="#" class="btn-white">Schedule Now</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Dr. Debra Asakura, DC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
